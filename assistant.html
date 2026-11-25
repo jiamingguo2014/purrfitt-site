@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PURRFITT AI</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#F5EFE6}
+a{color:#2B2926;text-decoration:none}a:hover{color:#176B70}
+.chip:hover{background:#DCEBE9}
+input:focus{outline:2px solid #176B70;outline-offset:1px}
+</style>
+</head>
+<body>
+<div style="font-family: Inter, system-ui, sans-serif; color: #2B2926; background: #F5EFE6; font-size: 17px; line-height: 1.55; min-height: 100vh">
+<header style="max-width: 1240px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px">
+<a href="index.html" aria-label="PURRFITT home"><img src="assets/logo.png" alt="PURRFITT" style="height: 60px; display: block"></a>
+<nav style="display: flex; flex-wrap: wrap; gap: 8px 32px; font-size: 16px"><a href="#top" style="font-weight: 600">My Cats</a><a href="#top">Records</a><a href="#top">Device</a><a href="account.html">Sign out</a></nav>
+</header>
+<main id="top" style="max-width: 1240px; margin: 0 auto; padding: 16px 24px 64px; display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<div style="background: #fff; border-radius: 28px; padding: 32px">
+<p style="margin: 0 0 4px; font-size: 13px; font-weight: 600; letter-spacing: .1em; color: #176B70">BRAMBLE · BORN APRIL 2025</p>
+<p style="font-family: 'Instrument Serif', Georgia, serif; font-size: 72px; line-height: 1; margin: 8px 0 4px">9.34 <span style="font-size: 30px">lb</span></p>
+<p style="margin: 0 0 20px; color: #4A4640">Latest weigh-in, Jul 14</p>
+<svg viewBox="0 0 500 130" role="img" aria-label="Bramble's weight from May 17 to July 14, between 9.26 and 9.55 pounds" style="width: 100%; display: block">
+<polyline points="20,15 112,90 204,36 296,102 388,60 480,78" fill="none" stroke="#176B70" stroke-width="3" stroke-linejoin="round"></polyline>
+<circle cx="20" cy="15" r="5" fill="#176B70"></circle><circle cx="112" cy="90" r="5" fill="#176B70"></circle><circle cx="204" cy="36" r="5" fill="#176B70"></circle><circle cx="296" cy="102" r="5" fill="#176B70"></circle><circle cx="388" cy="60" r="5" fill="#176B70"></circle><circle cx="480" cy="78" r="5" fill="#176B70"></circle>
+</svg>
+<div style="display: flex; justify-content: space-between; font-size: 13px; color: #5A554E; margin-top: 6px"><span>May 17</span><span>Jun 12</span><span>Jul 14</span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px">
+<div style="flex: 1 1 120px; background: #F5EFE6; border-radius: 16px; padding: 16px"><p style="margin: 0; font-size: 13px; color: #5A554E">Change since May 17</p><p style="margin: 2px 0 0; font-weight: 600">−0.21 lb (−2.2%)</p></div>
+<div style="flex: 1 1 120px; background: #F5EFE6; border-radius: 16px; padding: 16px"><p style="margin: 0; font-size: 13px; color: #5A554E">Range</p><p style="margin: 2px 0 0; font-weight: 600">9.26 – 9.55 lb</p></div>
+</div>
+</div>
+<p style="margin: 0; font-size: 14px; color: #5A554E">Sample data for design preview.</p>
+</div>
+
+<div style="flex: 999 1 520px; min-width: 0; background: #fff; border-radius: 28px; padding: clamp(20px, 3vw, 36px); display: flex; flex-direction: column; gap: 20px">
+<h1 style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 46px); line-height: 1.05; letter-spacing: -.02em; margin: 0">Ask PURRFITT AI</h1>
+<div aria-live="polite" style="display: flex; flex-direction: column; gap: 12px; min-height: 280px">
+<div id="msgs" style="display: contents"></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<div id="chips" style="display: contents"></div>
+</div>
+<div style="display: flex; gap: 10px">
+<label for="ai-q" style="position: absolute; left: -9999px">Your question</label>
+<input id="ai-q" type="text"  placeholder="Ask about Bramble…" style="flex: 1; min-width: 0; font: inherit; padding: 14px 18px; border-radius: 999px; border: 1px solid #8A8479; background: #fff">
+<button type="button" id="send" style="font: inherit; font-weight: 600; background: #176B70; color: #fff; border: 0; padding: 14px 26px; border-radius: 999px; cursor: pointer">Send</button>
+</div>
+<p style="margin: 0; font-size: 13px; color: #5A554E">PURRFITT AI describes patterns in your records. It is not a veterinarian and cannot diagnose. For health concerns, contact your vet.</p>
+</div>
+
+</main>
+</div>
+<script type="text/plain" id="t-msg">
+<p style="margin: 0; max-width: 82%; padding: 14px 18px; border-radius: 18px; align-self: {{ m.align }}; background: {{ m.bg }}; color: {{ m.fg }}">{{ m.text }}</p>
+</script><script type="text/plain" id="t-chip">
+<button class="chip" type="button" data-i="{{ c.i }}" style="font: inherit; font-size: 15px; background: #F5EFE6; color: #2B2926; border: 1px solid #C9C1B4; padding: 11px 16px; border-radius: 999px; cursor: pointer">{{ c.q }}</button>
+</script><script>
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function tpl(id){return document.getElementById(id).textContent}
+function fill(t,as,o){return t.replace(new RegExp('\\{\\{\\s*'+as+'\\.(\\w+)\\s*\\}\\}','g'),function(_,k){return k.slice(-4)==='Html'?o[k]:esc(o[k])})}
+
+var qa=[
+{ q: 'Is Bramble’s weight okay?', a: 'Bramble went from 9.55 lb to 9.34 lb since May 17, about 2% lower. The readings move up and down within a 0.3 lb band rather than falling steadily, so I don’t see a clear trend yet. I can’t say whether this weight is healthy for Bramble; your vet can. Weigh weekly and I’ll point it out if a pattern forms.' },
+{ q: 'What changed this month?', a: 'Two weigh-ins in July: 9.40 lb on Jul 4 and 9.34 lb on Jul 14. That’s close to June’s readings (9.48 and 9.26 lb). Nothing stands out compared with the month before.' },
+{ q: 'Summarize this for my vet', a: 'Bramble, born April 2025. Six home weigh-ins from May 17 to Jul 14: 9.55, 9.30, 9.48, 9.26, 9.40, 9.34 lb. Net change −0.21 lb (−2.2%), range 9.26–9.55 lb. Photos are attached to each record.' }
+];var log=[{who:'ai',text:'Hi! I can see six weigh-ins for Bramble since May 17. What would you like to know?'}];
+function draw(){document.getElementById('msgs').innerHTML=log.map(function(m){var me=m.who==='me';return fill(tpl('t-msg'),'m',{text:m.text,align:me?'flex-end':'flex-start',bg:me?'#23403F':'#F5EFE6',fg:me?'#F5EFE6':'#2B2926'})}).join('')}
+function push(q,a){log.push({who:'me',text:q},{who:'ai',text:a});draw()}
+document.getElementById('chips').innerHTML=qa.map(function(x,i){return fill(tpl('t-chip'),'c',{q:x.q,i:i})}).join('');
+document.getElementById('chips').addEventListener('click',function(e){var b=e.target.closest('[data-i]');if(b){var x=qa[+b.dataset.i];push(x.q,x.a)}});
+var inp=document.getElementById('ai-q');
+function send(){var t=inp.value.trim();if(!t)return;inp.value='';push(t,'This is a design preview, so I can only answer the three sample questions below. In the real product this reply would come from the AI.')}
+document.getElementById('send').addEventListener('click',send);
+inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();send()}});
+draw();
+</script>
+</body>
+</html>
