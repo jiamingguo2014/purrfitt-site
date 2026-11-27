@@ -3,175 +3,201 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PURRFITT Home</title>
+<title>PURRFITT | Cat weight and photo tracker</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap">
 <style>
-body{margin:0;background:#F5EFE6}
+body{margin:0;background:#F5EFE6;font-family:Inter,system-ui,sans-serif;color:#2B2926;font-size:17px;line-height:1.55}
 a{color:#2B2926;text-decoration:none}a:hover{color:#176B70}
-.pill:hover{opacity:.88;color:#fff}
+h1,h2,h3,.serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.02em}
+h2{font-size:clamp(34px,4.4vw,56px);line-height:1.04;margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.pill{display:inline-block;border:0;cursor:pointer;font:inherit;border-radius:999px;padding:15px 28px;color:#fff;background:#3B3835}
+.pill:hover{opacity:.88;color:#fff}.pill.teal{background:#176B70;font-weight:600}
 .dk a{color:#F5EFE6}.dk a:hover{color:#9FD6D2}
-.card:hover{box-shadow:0 0 0 2px #176B70}
-summary{cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}
+.card{flex:1 1 170px;min-width:0;font:inherit;color:inherit;text-align:left;border:0;cursor:pointer;border-radius:20px;padding:0;overflow:hidden;display:flex;flex-direction:column;background:#fff}
+.card:hover{box-shadow:0 0 0 2px #176B70}.card[aria-expanded=true]{background:#DCEBE9}
+.card img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff}
+.card span.row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 18px}
+.card .t{font-family:'Instrument Serif',Georgia,serif;font-size:24px;line-height:1.1}
+.card .s{flex:none;width:34px;height:34px;border-radius:50%;background:#F5EFE6;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1}
+.tabs{display:inline-flex;background:#EBE3D7;border-radius:999px;padding:4px}
+.tabs button{font:inherit;font-size:16px;border:0;cursor:pointer;padding:10px 22px;border-radius:999px;background:transparent;color:#2B2926}
+.tabs button[aria-selected=true]{background:#2B2926;color:#fff}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th,td{padding:16px 14px;border-top:1px solid #E6DFD3;text-align:center}
+th:first-child,td:first-child{text-align:left}
+thead th{border-top:0;font-weight:600;font-size:16px}
+.us{background:#DCEBE9}
+.y,.n,.m{display:inline-block;min-width:34px;padding:4px 12px;border-radius:999px;font-size:14px;font-weight:600}
+.y{background:#176B70;color:#fff}.n{background:#EBE3D7;color:#5A554E}.m{background:#F3E3C3;color:#5C4510}
+.step{flex:1 1 260px;background:#EBE3D7;border-radius:20px;padding:28px}
+.step b{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:44px;line-height:1;color:#176B70}
+.step h3{font-family:Inter,sans-serif;letter-spacing:0;margin:12px 0 6px;font-size:20px;font-weight:600}
+.step p{margin:0;color:#4A4640}
+.ph{aspect-ratio:4/3;border:2px dashed #B5AC9D;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#5A554E;text-align:center;padding:8px;background:#F5EFE6}
+.pc{background:#fff;border-radius:20px;padding:20px 20px 26px}.pc h3{font-family:Inter,sans-serif;letter-spacing:0;font-size:20px;font-weight:600;margin:18px 0 6px}.pc p{margin:0;color:#4A4640}
+details{border-top:1px solid #D9D1C4;padding:18px 0}
+summary{cursor:pointer;list-style:none;font-size:18px;font-weight:500;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+details p{margin:10px 0 0;color:#4A4640;max-width:700px}
+input:focus{outline:2px solid #2A9BA1;outline-offset:2px}
+section,section.wrap{padding-top:96px}
 </style>
 </head>
 <body>
-<div style="font-family: Inter, system-ui, sans-serif; color: #2B2926; background: #F5EFE6; font-size: 17px; line-height: 1.55">
 
-<header style="max-width: 1240px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px">
-<a href="#top" aria-label="PURRFITT home"><img src="assets/logo.png" alt="PURRFITT" style="height: 60px; display: block"></a>
-<nav style="display: flex; flex-wrap: wrap; gap: 8px 36px; font-size: 16px">
-<a href="#features">Features</a>
-<a href="#how">How It Works</a>
-<a href="#why">Why Weight Matters</a>
-<a href="#faq">FAQ</a>
+<header class="wrap" style="padding-top:16px;padding-bottom:16px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 32px">
+<a href="#top" aria-label="PURRFITT home"><img src="assets/logo.png" alt="PURRFITT" style="height:60px;display:block"></a>
+<nav style="display:flex;flex-wrap:wrap;gap:8px 32px;font-size:16px">
+<a href="#features">Features</a><a href="#features" id="navCompare">Compare</a><a href="#how">How It Works</a><a href="#why">Why Weight Matters</a><a href="#photos">Photos</a><a href="#faq">FAQ</a>
 </nav>
-<div style="display: flex; align-items: center; gap: 20px">
-<a href="account.html" style="font-size: 16px; padding: 12px 4px">Sign in</a>
-<a class="pill" href="#buy" style="background: #176B70; color: #fff; padding: 12px 26px; border-radius: 999px; font-size: 16px; font-weight: 600">Buy</a>
-</div>
+<a class="pill teal" href="subscribe.html" style="padding:12px 26px;font-size:16px">Subscribe</a>
 </header>
 
-<section id="top" style="max-width: 1240px; margin: 0 auto; padding: 24px 24px 0; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
-<div style="flex: 1 1 420px; min-width: 0">
-<h1 style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(44px, 6vw, 84px); line-height: 1; letter-spacing: -.02em; margin: 0 0 20px">Your cat can't tell you when something changes.</h1>
-<p style="max-width: 480px; margin: 0 0 28px; font-size: 19px; color: #4A4640">PURRFITT tracks weight trends and photos at home, so slow changes don't go unnoticed.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px">
-<a class="pill" href="#buy" style="background: #176B70; color: #fff; padding: 16px 32px; border-radius: 999px; font-weight: 600">Buy PURRFITT</a>
-<a class="pill" href="#how" style="background: #3B3835; color: #fff; padding: 16px 28px; border-radius: 999px">How It Works</a>
+<main>
+<div id="top" class="wrap" style="padding-top:24px;display:flex;flex-wrap:wrap;gap:40px;align-items:center">
+<div style="flex:1 1 420px;min-width:0">
+<p style="margin:0 0 20px"><span style="display:inline-block;background:#1C1B1A;color:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;padding:8px 14px;border-radius:8px">COMING SOON TO KICKSTARTER</span></p>
+<h1 style="font-size:clamp(44px,6vw,84px);line-height:1;margin:0 0 20px">Your cat can't tell you when something changes.</h1>
+<p style="max-width:480px;margin:0 0 28px;font-size:19px;color:#4A4640">PURRFITT tracks weight trends and photos at home, so slow changes don't go unnoticed.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px">
+<a class="pill teal" href="subscribe.html" style="padding:16px 32px">Join the Waitlist</a>
+<a class="pill" href="#how" style="padding:16px 28px">How It Works</a>
 </div>
-<p style="margin: 28px 0 0; font-size: 15px; color: #4A4640">No Wi-Fi &nbsp;·&nbsp; No subscription &nbsp;·&nbsp; USB-C rechargeable &nbsp;·&nbsp; Up to 5 cats</p>
+<p style="margin:28px 0 0;font-size:15px;color:#4A4640">Everything on the device &nbsp;·&nbsp; No Wi-Fi &nbsp;·&nbsp; No phone needed &nbsp;·&nbsp; Up to 5 cats</p>
 </div>
-<img src="assets/hero.jpg" alt="PURRFITT weight tracker beside a tabby cat" style="flex: 1 1 420px; min-width: 0; width: 100%; border-radius: 28px; aspect-ratio: 5 / 4; object-fit: cover; object-position: 85% center">
-</section>
+<img src="assets/hero2.jpg" alt="PURRFITT weight tracker beside a tabby cat" style="flex:0 1 460px;min-width:0;width:100%;border-radius:28px;aspect-ratio:4/5;object-fit:cover">
+</div>
 
-<section id="features" style="max-width: 1240px; margin: 0 auto; padding: 96px 24px 0">
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 28px">
-<h2 style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.04; letter-spacing: -.02em; margin: 0">More than a number.</h2>
-<p style="margin: 0; color: #4A4640">Tap a card to see more.</p>
+<section id="features" class="wrap">
+<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin-bottom:28px">
+<h2>More than a number.</h2>
+<div class="tabs" role="tablist">
+<button type="button" role="tab" id="tabF" aria-selected="true" aria-controls="paneF">Features</button>
+<button type="button" role="tab" id="tabC" aria-selected="false" aria-controls="paneC">Compare</button>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 14px">
-<div id="cards" style="display: contents"></div>
 </div>
+<div id="paneF" role="tabpanel" aria-labelledby="tabF">
+<div id="cards" style="display:flex;flex-wrap:wrap;gap:14px"></div>
 <div id="panel"></div>
-</section>
-
-<section id="how" style="max-width: 1240px; margin: 0 auto; padding: 96px 24px 0">
-<h2 style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.04; letter-spacing: -.02em; margin: 0 0 28px">Three steps. About two seconds.</h2>
-<div style="display: flex; flex-wrap: wrap; gap: 14px">
-<div style="flex: 1 1 260px; background: #EBE3D7; border-radius: 20px; padding: 28px"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 44px; line-height: 1; color: #176B70">1</span><h3 style="margin: 12px 0 6px; font-size: 20px; font-weight: 600">Prepare</h3><p style="margin: 0; color: #4A4640">Settle your cat in a hammock, carrier, or harness.</p></div>
-<div style="flex: 1 1 260px; background: #EBE3D7; border-radius: 20px; padding: 28px"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 44px; line-height: 1; color: #176B70">2</span><h3 style="margin: 12px 0 6px; font-size: 20px; font-weight: 600">Lift</h3><p style="margin: 0; color: #4A4640">Hook on and lift. The reading locks in by itself.</p></div>
-<div style="flex: 1 1 260px; background: #EBE3D7; border-radius: 20px; padding: 28px"><span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 44px; line-height: 1; color: #176B70">3</span><h3 style="margin: 12px 0 6px; font-size: 20px; font-weight: 600">Save</h3><p style="margin: 0; color: #4A4640">Weight, date, and time are saved to your cat's profile.</p></div>
+</div>
+<div id="paneC" role="tabpanel" aria-labelledby="tabC" hidden>
+<div style="background:#fff;border-radius:24px;padding:clamp(12px,2.5vw,32px);overflow-x:auto">
+<table>
+<thead><tr><th scope="col"><span style="position:absolute;left:-9999px">Feature</span></th><th scope="col">Bathroom scale</th><th scope="col">Phone app</th><th scope="col" class="us" style="border-radius:16px 16px 0 0;color:#176B70">PURRFITT</th></tr></thead>
+<tbody id="cmp"></tbody>
+</table>
+</div>
+<p style="margin:12px 0 0;font-size:14px;color:#5A554E">"Phone app" means a typical pet weight-log app where you type each reading in yourself.</p>
 </div>
 </section>
 
-<section id="why" style="max-width: 1240px; margin: 0 auto; padding: 96px 24px 0">
-<div style="background: #23403F; color: #F5EFE6; border-radius: 28px; padding: clamp(28px, 5vw, 64px)">
-<p style="margin: 0 0 14px; font-size: 13px; font-weight: 600; letter-spacing: .1em">WHY WEIGHT MATTERS</p>
-<h2 style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 4.2vw, 56px); line-height: 1.05; letter-spacing: -.02em; margin: 0 0 24px; max-width: 820px">One measurement rarely tells the full story. A trend does.</h2>
-<button type="button" id="whyBtn" aria-expanded="false" style="font: inherit; background: #F5EFE6; color: #2B2926; border: 0; padding: 13px 24px; border-radius: 999px; cursor: pointer">Read why</button>
+<section id="how" class="wrap">
+<h2 style="margin-bottom:28px">Three steps. About two seconds.</h2>
+<div style="display:flex;flex-wrap:wrap;gap:14px">
+<div class="step"><b>1</b><h3>Prepare</h3><p>Settle your cat in a hammock, carrier, or harness.</p></div>
+<div class="step"><b>2</b><h3>Lift</h3><p>Hook on and lift. The reading locks in by itself.</p></div>
+<div class="step"><b>3</b><h3>Save</h3><p>Weight, date, and time are saved to your cat's profile. Add a photo.</p></div>
+</div>
+</section>
+
+<section id="why" class="wrap">
+<div style="background:#23403F;color:#F5EFE6;border-radius:28px;padding:clamp(24px,4vw,56px)">
+<div style="display:flex;flex-wrap:wrap;gap:32px 48px;align-items:center">
+<img src="assets/chart.jpg" alt="Sample weight chart for a cat named Bramble: six weigh-ins from May 17 to July 14 between 9.26 and 9.55 lb" style="flex:1 1 380px;min-width:0;width:100%;border-radius:18px;background:#fff">
+<div style="flex:1 1 380px;min-width:0">
+<p style="margin:0 0 14px;font-size:13px;font-weight:600;letter-spacing:.1em">WHY WEIGHT MATTERS</p>
+<h2 style="margin:0 0 24px">One measurement rarely tells the full story. A trend does.</h2>
+<button type="button" id="whyBtn" aria-expanded="false" class="pill" style="background:#F5EFE6;color:#2B2926;padding:13px 24px">Read why</button>
+</div>
+</div>
 <div id="whyBody" hidden>
-<div style="display: flex; flex-wrap: wrap; gap: 16px 40px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(245,239,230,.25)">
-<p style="flex: 1 1 260px; margin: 0">Cats gain or lose weight slowly, over weeks or months. Day to day, it's almost impossible to see.</p>
-<p style="flex: 1 1 260px; margin: 0">A few ounces is a big share of a ten-pound cat, so small numbers can mean a real change.</p>
-<p style="flex: 1 1 260px; margin: 0">A dated record gives your vet something concrete to look at, instead of a guess.</p>
+<div style="display:flex;flex-wrap:wrap;gap:16px 40px;margin-top:32px;padding-top:28px;border-top:1px solid rgba(245,239,230,.25)">
+<p style="flex:1 1 260px;margin:0">Cats gain or lose weight slowly, over weeks or months. Day to day, it's almost impossible to see.</p>
+<p style="flex:1 1 260px;margin:0">A few ounces is a big share of a ten-pound cat, so small numbers can mean a real change.</p>
+<p style="flex:1 1 260px;margin:0">A dated record gives your vet something concrete to look at, instead of a guess.</p>
 </div>
 </div>
 </div>
 </section>
 
-<section id="ai" style="max-width: 1240px; margin: 0 auto; padding: 14px 24px 0">
-<div style="background: #EBE3D7; border-radius: 28px; padding: clamp(24px, 4vw, 48px); display: flex; flex-wrap: wrap; gap: 20px 40px; align-items: center; justify-content: space-between">
-<div style="flex: 1 1 420px; min-width: 0">
-<h2 style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.05; letter-spacing: -.02em; margin: 0 0 8px">Have a question? Ask PURRFITT AI.</h2>
-<p style="margin: 0; color: #4A4640">Create an account, sync your records, and ask about your cat's trend in plain language.</p>
+<section id="photos" class="wrap">
+<div style="background:#EBE3D7;border-radius:28px;padding:clamp(24px,4vw,56px)">
+<div style="display:flex;flex-wrap:wrap;gap:32px 48px;align-items:center">
+<div style="flex:1 1 380px;min-width:0">
+<p style="margin:0 0 14px;font-size:13px;font-weight:600;letter-spacing:.1em;color:#176B70">HOW PHOTOS WORK</p>
+<h2 style="margin:0 0 16px">Every picture tells part of the story.</h2>
+<p style="margin:0 0 24px;color:#4A4640;max-width:520px">Take a photo after each weigh-in. PURRFITT saves it with the weight and date, so you can look back and see what changed.</p>
+<button type="button" id="phBtn" aria-expanded="false" class="pill">Show more</button>
 </div>
-<a class="pill" href="account.html" style="background: #3B3835; color: #fff; padding: 15px 28px; border-radius: 999px">Create account</a>
+<img src="assets/photos.jpg" alt="Photo timeline on the PURRFITT screen" style="flex:1 1 320px;min-width:0;width:100%;max-width:460px;border-radius:18px;background:#fff">
+</div>
+<div id="phBody" hidden>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:36px">
+<div class="pc"><div class="ph">[CAT PHOTO: top or side view]</div><h3>Body Shape</h3><p>See filling out or thinning along the waist and spine that the number alone doesn't show.</p></div>
+<div class="pc"><div class="ph">[CAT PHOTO: coat close-up]</div><h3>Hair Quality</h3><p>Compare this month's coat with last month's: dull, greasy, or matted fur stands out side by side.</p></div>
+<div class="pc"><div class="ph">[PHOTO: dated incident]</div><h3>Vomiting</h3><p>A dated photo tells your vet how often it happens and what it looked like.</p></div>
+</div>
+</div>
 </div>
 </section>
 
-<section id="faq"style="max-width: 860px; margin: 0 auto; padding: 96px 24px 0">
-<h2 style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(34px, 4.4vw, 56px); line-height: 1.04; letter-spacing: -.02em; margin: 0 0 20px">Questions</h2>
-<div id="faqs"></div>
+<section id="faq" style="max-width:860px;margin:0 auto;padding-left:24px;padding-right:24px">
+<h2 style="margin-bottom:20px">Questions</h2>
+<details><summary><span>Does PURRFITT need Wi-Fi or a phone?</span><span aria-hidden="true" style="color:#176B70">+</span></summary><p>No. Weighing, photos, and trends all happen on the device. There is no app to install.</p></details>
+<details><summary><span>How many cats can I add?</span><span aria-hidden="true" style="color:#176B70">+</span></summary><p>Up to five profiles, plus Guest Mode for one-off measurements.</p></details>
+<details><summary><span>Can I use my own carrier or harness?</span><span aria-hidden="true" style="color:#176B70">+</span></summary><p>Yes. Save its weight once with TARE and PURRFITT subtracts it from future readings.</p></details>
+<details><summary><span>When can I get one?</span><span aria-hidden="true" style="color:#176B70">+</span></summary><p>PURRFITT will launch on Kickstarter [LAUNCH DATE]. Join the waitlist and we'll email you the date and early-bird pricing first.</p></details>
+<details><summary><span>Is PURRFITT a medical device?</span><span aria-hidden="true" style="color:#176B70">+</span></summary><p>No. It is a home wellness tracker that helps you keep a record to share with your veterinarian.</p></details>
 </section>
+</main>
 
-<section id="buy" class="dk" style="background: #1C1B1A; color: #F5EFE6; margin-top: 96px; padding: 80px 24px 40px">
-<div style="max-width: 1240px; margin: 0 auto">
-<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
-<img src="assets/setup.jpg" alt="PURRFITT with weighing hammock and carrier" style="flex: 1 1 360px; min-width: 0; width: 100%; border-radius: 24px; aspect-ratio: 4 / 3; object-fit: cover; background: #fff">
-<div style="flex: 1 1 360px; min-width: 0">
-<h2 style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(38px, 5vw, 68px); line-height: 1.02; letter-spacing: -.02em; margin: 0 0 12px">Start your cat's health history.</h2>
-<p style="margin: 0 0 6px; color: #D5CEC3">PURRFITT Pet Weight Tracker · weighs up to 20 kg / 44 lb</p>
-<p style="font-family: 'Instrument Serif', Georgia, serif; font-size: 44px; line-height: 1.1; margin: 16px 0 24px">[YOUR PRICE]</p>
-<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
-<a class="pill" href="https://purrfitt.store/products/[YOUR-PRODUCT-LINK]" style="background: #2A9BA1; color: #fff; padding: 17px 40px; border-radius: 999px; font-weight: 600; font-size: 18px">Buy Now</a>
-<span style="font-size: 15px; color: #BDB6AB">[SHIPPING DATE] · [RETURN POLICY]</span>
+<footer id="waitlist" class="dk" style="background:#1C1B1A;color:#F5EFE6;margin-top:96px;padding:80px 0 40px">
+<div class="wrap">
+<div style="text-align:center">
+<h2 style="font-size:clamp(38px,5vw,68px);margin:0 0 12px">Be first in line on Kickstarter.</h2>
+<p style="margin:0 auto 28px;max-width:520px;color:#D5CEC3">Subscribers get the launch date and early-bird pricing before anyone else.</p>
+<form action="subscribe.html" method="get" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+<label for="wl" style="position:absolute;left:-9999px">Email address</label>
+<input id="wl" name="email" type="email" placeholder="Email address" style="flex:0 1 340px;min-width:0;font:inherit;padding:16px 22px;border-radius:999px;border:1px solid #F5EFE6;background:#F5EFE6;color:#2B2926">
+<button class="pill teal" type="submit" style="background:#2A9BA1;padding:16px 30px">Join the Waitlist</button>
+</form>
 </div>
+<div style="margin-top:72px;padding-top:24px;border-top:1px solid rgba(245,239,230,.2);display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between;font-size:15px">
+<span style="font-weight:600;letter-spacing:.12em">PURRFITT</span>
+<nav style="display:flex;flex-wrap:wrap;gap:8px 28px"><a href="#features">Features</a><a href="#how">How It Works</a><a href="#faq">FAQ</a><a href="subscribe.html">Subscribe</a></nav>
 </div>
+<p style="margin:20px 0 0;font-size:13px;line-height:1.6;color:#BDB6AB;max-width:1000px">PURRFITT is a home wellness tracker, not a veterinary medical device. It does not diagnose, treat, or prevent any condition. If you have concerns about your cat's health, talk to your veterinarian. Product images are renderings of a product in development; the final product may differ.</p>
 </div>
-<div style="margin-top: 72px; padding-top: 24px; border-top: 1px solid rgba(245,239,230,.2); display: flex; flex-wrap: wrap; gap: 16px 40px; justify-content: space-between; font-size: 15px">
-<span style="font-weight: 600; letter-spacing: .12em">PURRFITT</span>
-<nav style="display: flex; flex-wrap: wrap; gap: 8px 28px"><a href="#features">Features</a><a href="#how">How It Works</a><a href="#faq">FAQ</a><a href="#top">About</a><a href="#top">Contact</a></nav>
-</div>
-<p style="margin: 20px 0 0; font-size: 13px; line-height: 1.6; color: #BDB6AB; max-width: 1000px">PURRFITT is a home wellness tracker, not a veterinary medical device. It does not diagnose, treat, or prevent any condition. If you have concerns about your cat's health, talk to your veterinarian. Product images are renderings; the final product may differ.</p>
-</div>
-</section>
+</footer>
 
-</div>
-<script type="text/plain" id="t-card">
-<button class="card" type="button" data-id="{{ c.id }}" aria-expanded="{{ c.open }}" style="flex: 1 1 170px; min-width: 0; font: inherit; color: inherit; text-align: left; border: 0; cursor: pointer; border-radius: 20px; padding: 0; overflow: hidden; display: flex; flex-direction: column; background: {{ c.bg }}">
-<img src="{{ c.img }}" alt="" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover; background: #fff">
-<span style="display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 16px 18px 18px; width: 100%; box-sizing: border-box">
-<span style="font-family: 'Instrument Serif', Georgia, serif; font-size: 24px; line-height: 1.1">{{ c.title }}</span>
-<span aria-hidden="true" style="flex: none; width: 34px; height: 34px; border-radius: 50%; background: #F5EFE6; color: #2B2926; display: flex; align-items: center; justify-content: center; font-size: 22px; line-height: 1">{{ c.sign }}</span>
-</span>
-</button>
-</script><script type="text/plain" id="t-panel">
-<div style="margin-top: 14px; background: #fff; border-radius: 24px; padding: clamp(20px, 3vw, 40px); display: flex; flex-wrap: wrap; gap: 32px; align-items: center">
-<img src="{{ active.img }}" alt="{{ active.alt }}" style="flex: 0 1 300px; min-width: 0; width: 100%; max-width: 300px; aspect-ratio: 1 / 1; object-fit: contain; border-radius: 16px">
-<div style="flex: 1 1 360px; min-width: 0">
-<p style="margin: 0 0 10px; font-size: 13px; font-weight: 600; letter-spacing: .1em; color: #176B70">{{ active.kicker }}</p>
-<h3 style="font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.06; margin: 0 0 18px">{{ active.head }}</h3>
-<ul style="list-style: none; margin: 0; padding: 0">
-{{ active.pointsHtml }}
-</ul>
-</div>
-</div>
-</script><script type="text/plain" id="t-li">
-<li style="padding: 12px 0; border-top: 1px solid #E6DFD3; color: #3B3835">{{ p }}</li>
-</script><script type="text/plain" id="t-faq">
-<details style="border-top: 1px solid #D9D1C4; padding: 18px 0">
-<summary style="font-size: 18px; font-weight: 500; display: flex; justify-content: space-between; gap: 16px"><span>{{ f.q }}</span><span aria-hidden="true" style="color: #176B70">+</span></summary>
-<p style="margin: 10px 0 0; color: #4A4640; max-width: 700px">{{ f.a }}</p>
-</details>
-</script><script>
+<script>
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function tpl(id){return document.getElementById(id).textContent}
-function fill(t,as,o){return t.replace(new RegExp('\\{\\{\\s*'+as+'\\.(\\w+)\\s*\\}\\}','g'),function(_,k){return k.slice(-4)==='Html'?o[k]:esc(o[k])})}
-
 var data=[
-{ id: 'trend', title: 'Weight Trend', img: 'assets/trend.jpg', alt: 'Weight trend chart on the PURRFITT screen', kicker: 'WEIGHT TREND', head: 'See the trend, not just today.', points: ['Switch between 1 month, 3 months, and 1 year', 'Latest weight, change, and range at a glance', 'The chart rescales itself to fit your cat'] },
-{ id: 'photos', title: 'Photo Timeline', img: 'assets/photos.jpg', alt: 'Photo timeline on the PURRFITT screen', kicker: 'PHOTO TIMELINE', head: 'Every picture tells part of the story.', points: ['Each photo is saved with its weight and date', 'Compare how your cat looks across weeks, months, or years', 'Easy to show your vet'] },
-{ id: 'cats', title: 'Multi-Cat', img: 'assets/cats.jpg', alt: 'Five cat profiles on the PURRFITT home screen', kicker: 'MULTI-CAT PROFILES', head: 'A profile for every cat.', points: ['Up to five cats, each with their own history', 'Switch profiles with one tap', 'Guest Mode for one-off weigh-ins'] },
-{ id: 'sync', title: 'Phone Sync', img: 'assets/sync.jpg', alt: 'PURRFITT syncing to a phone over Bluetooth', kicker: 'BLUETOOTH SYNC', head: 'On your phone when you want it.', points: ['Transfer records and photos with one tap', 'Local Bluetooth connection, no cloud required', 'Records stay on the device until you choose to sync'] },
-{ id: 'tare', title: 'Any Carrier', img: 'assets/hammock.jpg', alt: 'A cat in a weighing hammock with PURRFITT attached', kicker: 'FLEXIBLE SETUP', head: 'Comfortable for cats. Simple for you.', points: ['Works with a hammock, your own carrier, or a harness', 'Save the carrier weight once with TARE and reuse it', 'Detects a stable reading in about two seconds'] },
-{ id: 'ai', title: 'AI Insights', img: 'assets/saved.jpg', alt: 'PURRFITT screen showing a saved weight', kicker: 'COMING SOON', head: 'A second pair of eyes on the trend.', points: ['Optional account that reviews weight history and photos', 'Flags patterns worth mentioning to your vet', 'In development; not a diagnosis'] }
-];var faqs=[
-{ q: 'Does PURRFITT need Wi-Fi?', a: 'No. Weighing, saving, and reviewing trends all happen on the device. Bluetooth sync to your phone is optional.' },
-{ q: 'How many cats can I add?', a: 'Up to five profiles, plus Guest Mode for one-off measurements.' },
-{ q: 'Can I use my own carrier or harness?', a: 'Yes. Save its weight once with TARE and PURRFITT subtracts it from future readings.' },
-{ q: 'Will weighing stress my cat?', a: 'Use whatever your cat already knows: a familiar carrier, a hammock, or a harness. A reading takes about two seconds.' },
-{ q: 'Is PURRFITT a medical device?', a: 'No. It is a home wellness tracker that helps you keep a record to share with your veterinarian.' }
-];var open=null;
+{id:'trend',title:'Weight Trend',img:'trend.jpg',alt:'Weight trend chart on the PURRFITT screen',kicker:'WEIGHT TREND',head:'See the trend, not just today.',points:['Switch between 1 month, 3 months, and 1 year','Latest weight, change, and range at a glance','The chart rescales itself to fit your cat']},
+{id:'photos',title:'Photo Timeline',img:'photos.jpg',alt:'Photo timeline on the PURRFITT screen',kicker:'PHOTO TIMELINE',head:'Every picture tells part of the story.',points:['Each photo is saved with its weight and date','Look back at body shape, coat, eyes and nose over weeks or months','Scroll through the timeline with your vet at the next visit']},
+{id:'cats',title:'Multi-Cat',img:'cats.jpg',alt:'Five cat profiles on the PURRFITT home screen',kicker:'MULTI-CAT PROFILES',head:'A profile for every cat.',points:['Up to five cats, each with their own history','Switch profiles with one tap','Guest Mode for one-off weigh-ins']},
+{id:'tare',title:'Any Carrier',img:'hammock.jpg',alt:'A cat in a weighing hammock with PURRFITT attached',kicker:'FLEXIBLE SETUP',head:'Comfortable for cats. Simple for you.',points:['Works with a hammock, your own carrier, or a harness','Save the carrier weight once with TARE and reuse it','Detects a stable reading in about two seconds']},
+{id:'device',title:'All On Device',img:'saved.jpg',alt:'PURRFITT screen showing a saved weight',kicker:'STANDALONE',head:'No phone. No app. No Wi-Fi.',points:['Weigh, save, and review trends on the built-in screen','Records stay on your device','USB-C rechargeable']}
+];
+var open=null,cards=document.getElementById('cards'),panel=document.getElementById('panel');
 function draw(){
- document.getElementById('cards').innerHTML=data.map(function(d){var o=Object.assign({},d,{open:open===d.id,sign:open===d.id?'\u2212':'+',bg:open===d.id?'#DCEBE9':'#fff'});return fill(tpl('t-card'),'c',o)}).join('');
+ cards.innerHTML=data.map(function(d){var o=open===d.id;return '<button class="card" type="button" data-id="'+d.id+'" aria-expanded="'+o+'"><img src="assets/'+d.img+'" alt=""><span class="row"><span class="t">'+esc(d.title)+'</span><span class="s" aria-hidden="true">'+(o?'−':'+')+'</span></span></button>'}).join('');
  var a=data.filter(function(d){return d.id===open})[0];
- document.getElementById('panel').innerHTML=a?fill(tpl('t-panel'),'active',Object.assign({},a,{pointsHtml:a.points.map(function(p){return tpl('t-li').replace(/\{\{\s*p\s*\}\}/g,esc(p))}).join('')})):'';
+ panel.innerHTML=a?'<div style="margin-top:14px;background:#fff;border-radius:24px;padding:clamp(20px,3vw,40px);display:flex;flex-wrap:wrap;gap:32px;align-items:center"><img src="assets/'+a.img+'" alt="'+esc(a.alt)+'" style="flex:0 1 300px;min-width:0;width:100%;max-width:300px;aspect-ratio:1/1;object-fit:contain;border-radius:16px"><div style="flex:1 1 360px;min-width:0"><p style="margin:0 0 10px;font-size:13px;font-weight:600;letter-spacing:.1em;color:#176B70">'+esc(a.kicker)+'</p><h3 style="font-size:clamp(30px,3.4vw,44px);line-height:1.06;margin:0 0 18px">'+esc(a.head)+'</h3><ul style="list-style:none;margin:0;padding:0">'+a.points.map(function(p){return '<li style="padding:12px 0;border-top:1px solid #E6DFD3;color:#3B3835">'+esc(p)+'</li>'}).join('')+'</ul></div></div>':'';
 }
-document.getElementById('cards').addEventListener('click',function(e){var b=e.target.closest('[data-id]');if(!b)return;open=open===b.dataset.id?null:b.dataset.id;draw()});
-document.getElementById('faqs').innerHTML=faqs.map(function(f){return fill(tpl('t-faq'),'f',f)}).join('');
-var wb=document.getElementById('whyBtn'),wy=document.getElementById('whyBody');
-wb.addEventListener('click',function(){wy.hidden=!wy.hidden;wb.textContent=wy.hidden?'Read why':'Show less';wb.setAttribute('aria-expanded',String(!wy.hidden))});
+cards.addEventListener('click',function(e){var b=e.target.closest('[data-id]');if(!b)return;open=open===b.dataset.id?null:b.dataset.id;draw()});
 draw();
+var Y='<span class="y">Yes</span>',N='<span class="n">No</span>',M='<span class="m">Manual</span>';
+var rows=[['Weighs your cat',Y,N,Y],['Weight history and trends',N,M,Y],['Photo timeline linked to each weight',N,M,Y],['Separate profiles for up to 5 cats',N,Y,Y],['Easy to show your vet',N,Y,Y],['Works without Wi-Fi or a phone',Y,N,Y]];
+document.getElementById('cmp').innerHTML=rows.map(function(r,i){return '<tr><th scope="row" style="font-weight:500">'+r[0]+'</th><td>'+r[1]+'</td><td>'+r[2]+'</td><td class="us"'+(i===rows.length-1?' style="border-radius:0 0 16px 16px"':'')+'>'+r[3]+'</td></tr>'}).join('');
+var tF=document.getElementById('tabF'),tC=document.getElementById('tabC'),pF=document.getElementById('paneF'),pC=document.getElementById('paneC');
+function tab(c){tF.setAttribute('aria-selected',String(!c));tC.setAttribute('aria-selected',String(c));pF.hidden=c;pC.hidden=!c}
+tF.addEventListener('click',function(){tab(false)});tC.addEventListener('click',function(){tab(true)});
+document.getElementById('navCompare').addEventListener('click',function(){tab(true)});
+var wb=document.getElementById('whyBtn'),wy=document.getElementById('whyBody');
+function tog(b,y,l){b.addEventListener('click',function(){y.hidden=!y.hidden;b.textContent=y.hidden?l:'Show less';b.setAttribute('aria-expanded',String(!y.hidden))})}
+tog(wb,wy,'Read why');tog(document.getElementById('phBtn'),document.getElementById('phBody'),'Show more');
 </script>
 </body>
 </html>

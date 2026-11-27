@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Subscribe | PURRFITT</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600&display=swap">
+<style>
+body{margin:0;background:#F5EFE6;font-family:Inter,system-ui,sans-serif;color:#2B2926;font-size:17px;line-height:1.55}
+a{color:#176B70}a:hover{color:#0F4F53}
+h1,h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.02em}
+.tabs{display:inline-flex;background:#EBE3D7;border-radius:999px;padding:4px;margin-bottom:28px}
+.tabs button{font:inherit;font-size:15px;border:0;cursor:pointer;padding:10px 20px;border-radius:999px;background:transparent;color:#2B2926}
+.tabs button[aria-selected=true]{background:#2B2926;color:#fff}
+form{display:flex;flex-direction:column;gap:16px;max-width:420px}
+.f{display:flex;flex-direction:column;gap:6px}.f label{font-size:15px;font-weight:500}
+.f input{font:inherit;padding:14px 16px;border-radius:12px;border:1px solid #8A8479;background:#fff}
+input:focus{outline:2px solid #176B70;outline-offset:1px}
+.go{margin-top:8px;font:inherit;font-weight:600;text-align:center;background:#176B70;color:#fff;border:0;cursor:pointer;text-decoration:none;padding:16px 28px;border-radius:999px}
+.go:hover{opacity:.88;color:#fff}
+li{padding:16px 0;border-top:1px solid rgba(245,239,230,.25)}
+</style>
+</head>
+<body>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+<header style="max-width:1240px;width:100%;box-sizing:border-box;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between">
+<a href="index.html" aria-label="PURRFITT home"><img src="assets/logo.png" alt="PURRFITT" style="height:60px;display:block"></a>
+<a href="index.html" style="color:#2B2926;text-decoration:none">Back to home</a>
+</header>
+<main style="max-width:1240px;width:100%;box-sizing:border-box;margin:0 auto;padding:24px 24px 64px;display:flex;flex-wrap:wrap;gap:24px;align-items:stretch">
+<div style="flex:1 1 400px;min-width:0;background:#fff;border-radius:28px;padding:clamp(24px,4vw,56px)">
+<div class="tabs" role="tablist">
+<button type="button" role="tab" id="tabSub" aria-selected="true">Subscribe</button>
+<button type="button" role="tab" id="tabIn" aria-selected="false">Sign in</button>
+</div>
+
+<div id="paneSub">
+<h1 style="font-size:clamp(36px,4.4vw,56px);line-height:1.04;margin:0 0 8px">Join the waitlist.</h1>
+<p style="margin:0 0 28px;color:#4A4640">We'll email you when PURRFITT launches on Kickstarter.</p>
+<form id="subForm">
+<div class="f"><label for="s-name">Your name (optional)</label><input id="s-name" type="text" autocomplete="name"></div>
+<div class="f"><label for="s-email">Email</label><input id="s-email" type="email" autocomplete="email" required></div>
+<button class="go" type="submit">Subscribe</button>
+<p style="margin:0;font-size:13px;color:#5A554E">We only email about PURRFITT. Unsubscribe any time. [PRIVACY POLICY]</p>
+</form>
+<div id="done" hidden>
+<p style="font-family:'Instrument Serif',Georgia,serif;font-size:32px;line-height:1.1;margin:0 0 8px">You're on the list.</p>
+<p style="margin:0 0 20px;color:#4A4640">We'll write to <strong id="doneEmail"></strong> with the launch date and early-bird pricing.</p>
+<a href="index.html">Back to home</a>
+</div>
+<p style="margin:28px 0 0;font-size:15px">Already subscribed? <a href="#signin" id="toIn">Sign in</a></p>
+</div>
+
+<div id="paneIn" hidden>
+<h1 style="font-size:clamp(36px,4.4vw,56px);line-height:1.04;margin:0 0 8px">Welcome back.</h1>
+<p style="margin:0 0 28px;color:#4A4640">Sign in to your PURRFITT account.</p>
+<form>
+<div class="f"><label for="i-email">Email</label><input id="i-email" type="email" autocomplete="email"></div>
+<div class="f"><label for="i-pass">Password</label><input id="i-pass" type="password"></div>
+<a class="go" href="assistant.html">Sign in</a>
+<a href="#signin" style="font-size:15px">Forgot your password?</a>
+</form>
+<p style="margin:28px 0 0;font-size:15px">New here? <a href="#" id="toSub">Subscribe</a></p>
+</div>
+</div>
+
+<div style="flex:1 1 400px;min-width:0;background:#23403F;color:#F5EFE6;border-radius:28px;padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:32px">
+<h2 style="font-size:clamp(30px,3.6vw,46px);line-height:1.06;margin:0">What subscribers get</h2>
+<ul style="list-style:none;margin:0;padding:0">
+<li>The Kickstarter launch date before it's public</li>
+<li>Early-bird pricing reserved for the waitlist</li>
+<li>Progress updates as the product is built</li>
+</ul>
+</div>
+</main>
+</div>
+<script>
+// TODO: connect #subForm to your email tool (Shopify, Klaviyo, Mailchimp, Formspree...). Right now nothing is stored.
+var tS=document.getElementById('tabSub'),tI=document.getElementById('tabIn'),pS=document.getElementById('paneSub'),pI=document.getElementById('paneIn');
+function mode(signin){tS.setAttribute('aria-selected',String(!signin));tI.setAttribute('aria-selected',String(signin));pS.hidden=signin;pI.hidden=!signin}
+tS.addEventListener('click',function(){mode(false)});tI.addEventListener('click',function(){mode(true)});
+document.getElementById('toIn').addEventListener('click',function(){mode(true)});
+document.getElementById('toSub').addEventListener('click',function(e){e.preventDefault();mode(false)});
+if(location.hash==='#signin')mode(true);
+var q=new URLSearchParams(location.search).get('email');if(q)document.getElementById('s-email').value=q;
+document.getElementById('subForm').addEventListener('submit',function(e){e.preventDefault();document.getElementById('doneEmail').textContent=document.getElementById('s-email').value;this.hidden=true;document.getElementById('done').hidden=false});
+</script>
+</body>
+</html>
